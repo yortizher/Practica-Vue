@@ -1,0 +1,12 @@
+GET http://localhost:3030/users
+
+###
+POST http://localhost:3030/users
+Content-Type: application/json
+
+{
+    "username": "Jhon Doe",
+    "email": "jhon@gmail.com",
+    "active": true
+}
+
