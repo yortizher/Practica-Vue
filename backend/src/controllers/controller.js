@@ -16,7 +16,7 @@ export const createUsers = async  (req,res) => {
         return res.status(400).json({error: "Uno o más campos vacios"})
     }
     const createUser = await User.create({
-        id_user: uuid,
+        id: uuid,
         username,
         email,
         active
@@ -27,7 +27,7 @@ export const createUsers = async  (req,res) => {
 export const usersId = (req,res) => {
     const { id } = req.params
     res.json({
-        id_user: uuid,
+        id: uuid,
         nombre: `User N° ${id}`
     })
 }

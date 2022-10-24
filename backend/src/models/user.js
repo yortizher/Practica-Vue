@@ -1,11 +1,12 @@
 import {  DataTypes } from "sequelize";
 import { db } from "../db/db.js";
 
-const { STRING, BOOLEAN } = DataTypes
+const { STRING, BOOLEAN,UUID } = DataTypes
 
 export const User = db.define('data',{
-id_user: {
-    type: STRING
+id: {
+    type: UUID,
+    primaryKey: true
 },
 username:{ 
     type: STRING
