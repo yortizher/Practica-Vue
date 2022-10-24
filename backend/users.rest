@@ -5,8 +5,10 @@ POST http://localhost:3030/users
 Content-Type: application/json
 
 {
-    "username": "Jhon Doe",
-    "email": "jhon@gmail.com",
+    "username": "Drbobby",
+    "email": "Drbobby@gmail.com",
     "active": true
 }
+
+
 
