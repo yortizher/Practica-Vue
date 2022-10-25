@@ -10,5 +10,7 @@ Content-Type: application/json
     "active": true
 }
 
-
+###
+DELETE http://localhost:3030/users/51a0ed98-4771-4655-a829-57583b14c826
+Content-Type: application/json
 

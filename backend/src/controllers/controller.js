@@ -15,6 +15,22 @@ export const users = async (req,res) => {
     }
 }
 
+export const userById = async (req,res) => {
+    const { id } = req.params
+    try{
+        const userId = await User.findOne({
+            where: {
+              id,
+            },
+          });
+          res.json(userId);
+    }catch(err){
+        res.status(500).json({
+            message: err,
+          });
+    }
+}
+
 export const createUsers = async  (req,res) => {
     const { username,email,active } = req.body
     try{
@@ -34,10 +50,35 @@ export const createUsers = async  (req,res) => {
     }
 }
 
-export const usersId = (req,res) => {
+export const deleteUsers = async (req,res) => {
     const { id } = req.params
-    res.json({
-        id: v4(),
-        nombre: `User N° ${id}`
-    })
+    try{
+         await User.destroy({
+            where: {
+                id
+            }
+        })
+         res.status(204).json({message: `User with id:${id} was succesfully removed`})
+       }catch(err){
+            console.error(err)
+       }
 }
+export const editUsers = async (req,res) => {
+    const { id } = req.params
+    try {
+        const { username, email, active } = req.body
+    
+        const editUser = await User.findByPk(id)
+        editUser.username = username
+        editUser.email = email
+        editUser.active = active
+        await editUser.save()
+    
+        res.json(editUser)
+      } catch (err) {
+        return res.status(500).json({ message: err})
+      }
+}
+
+
+
